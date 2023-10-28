@@ -5,7 +5,7 @@ is GateDigger's generic implementation of a prefix tree.
 ### Core
 The core part of the project is split up into subfolders in order to be as modular as possible.
 - Core/Base - neccessary functionality
-  - Provides
+  - Provides GDPrefixTree&lt;S, T&gt; functionality
     - Get
     - Set
     - Static traversal methods
@@ -16,29 +16,34 @@ The core part of the project is split up into subfolders in order to be as modul
       - Value
       - AppendChildNode
       - FindChildNode
-- Core/Update - smart updates of values
-  - Provides
+- Core/Update - "smart" updates of values
+  - Provides GDPrefixTree&lt;S, T&gt; functionality
     - Update
     - SetOrUpdate
+  - Requires
+    - Core/Base requirements
 - Core/Removal - value deletion
-  - Provides
+  - Provides GDPrefixTree&lt;S, T&gt; functionality
     - Remove
     - RemoveBranch
   - Requires
+    - Core/Base requirements
     - Additional implementation of IGDNode&lt;S, T&gt;
       - RemoveChildNode
 - Core/Enumeration - systematic enumeration of nodes
   - Provides
-    - GDPrefixTree implementation of IEnumerable&lt;S, T&gt;
+    - GDPrefixTree&lt;S, T&gt; implementation of IEnumerable&lt;IGDNode&lt;S, T&gt;&gt;
     - Extension of IGDNode&lt;S, T&gt; by IEnumerable&lt;IGDNode&lt;S, T&gt;&gt;
   - Requires
-    - Implementation of IEnumerable&lt;IGDNode&lt;S, T&gt;&gt; through IGDNode&lt;S, T&gt;
+    - Core/Base requirements
+    - Additional implementation of IGDNode&lt;S, T&gt;
+      - IEnumerable&lt;IGDNode&lt;S, T&gt;&gt;
 - Core/Enumeration/GetEnumerator - absorbtion of interface IGDNode&lt;S, T&gt; into abstract class GDNode&lt;S, T&gt;
   - Provides
     - Implementation of IEnumerable&lt;IGDNode&lt;S, T&gt;&gt;
   - Requires
-    - Implementation equivalent to standard IGDNode&lt;S, T&gt;
-    - Implementation of GetChildNodes
+    - Implementation equivalent to IGDNode&lt;S, T&gt;
+      - Including GetChildNodes
 
 ### The example
 Example_WordCounting contains implementations of IGDKey&lt;char&gt; and GDNode&lt;char, int&gt;. Program.cs contains a script which reads through a text file and builds a prefix tree which counts word occurences. The user can then query the tree.
