@@ -41,7 +41,7 @@ The core part of the project is split up into subfolders in order to be as modul
     - Implementation of GetChildNodes
 
 ### The example
-Core/Example_WordCounting implements IGDKey&lt;char&gt; and GDNode&lt;char, int&gt;. Program.cs contains a script which reads through a text file and builds a prefix tree which counts word occurences. The user can then query the tree.
+Example_WordCounting contains implementations of IGDKey&lt;char&gt; and GDNode&lt;char, int&gt;. Program.cs contains a script which reads through a text file and builds a prefix tree which counts word occurences. The user can then query the tree.
 
 ## License
 
