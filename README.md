@@ -35,18 +35,17 @@ The core part of the project is split up into subfolders in order to be as modul
     - GDPrefixTree&lt;S, T&gt; implementation of IEnumerable&lt;IGDNode&lt;S, T&gt;&gt;
     - Extension of IGDNode&lt;S, T&gt; by IEnumerable&lt;IGDNode&lt;S, T&gt;&gt;
   - Requires
-    - Core/Base requirements
-    - Additional implementation of IGDNode&lt;S, T&gt;
-      - IEnumerable&lt;IGDNode&lt;S, T&gt;&gt;
+    - IGDNode&lt;S, T&gt; implementation
+        - Including IEnumerable&lt;IGDNode&lt;S, T&gt;&gt;
 - Core/Enumeration/GetEnumerator - absorbtion of interface IGDNode&lt;S, T&gt; into abstract class GDNode&lt;S, T&gt;
   - Provides
-    - Implementation of IEnumerable&lt;IGDNode&lt;S, T&gt;&gt;
+    - Implementation of IEnumerable&lt;IGDNode&lt;S, T&gt;&gt; extension of IGDNode&lt;S, T&gt;
   - Requires
-    - Implementation equivalent to IGDNode&lt;S, T&gt;
+    - Implementation of GDNode&lt;S, T&gt;, equivalent to base IGDNode&lt;S, T&gt;
       - Including GetChildNodes
 
 ### The example
-Example_WordCounting contains implementations of IGDKey&lt;char&gt; and GDNode&lt;char, int&gt;. Program.cs contains a script which reads through a text file and builds a prefix tree which counts word occurences. The user can then query the tree.
+Example_WordCounting contains an implementations of IGDKey&lt;char&gt; and GDNode&lt;char, int&gt; suited for word counting. Program.cs contains a script which reads through a text file and builds a prefix tree which counts word occurences. User can query the tree.
 
 ## License
 
