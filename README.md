@@ -35,7 +35,7 @@ The core part of the project is split up into subfolders in order to be as modul
     - Implementation of IEnumerable&lt;IGDNode&lt;S, T&gt;&gt; through IGDNode&lt;S, T&gt;
 - Core/Enumeration/GetEnumerator - absorbtion of interface IGDNode&lt;S, T&gt; into abstract class GDNode&lt;S, T&gt;
   - Provides
-    - Implementation of IEnumerable&lt;S, T&gt;
+    - Implementation of IEnumerable&lt;IGDNode&lt;S, T&gt;&gt;
   - Requires
     - Implementation equivalent to standard IGDNode&lt;S, T&gt;
     - Implementation of GetChildNodes
