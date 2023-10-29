@@ -1,4 +1,6 @@
-﻿namespace GDPrefixTree
+﻿using System.Collections.Generic;
+
+namespace GDPrefixTree
 {
     public class WordCountingNode : GDNode<char, int>
     {

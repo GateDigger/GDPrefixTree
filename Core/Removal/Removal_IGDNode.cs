@@ -7,7 +7,7 @@
         /// </summary>
         /// <param name="address">The address of the node to remove</param>
         /// <returns>Whether the attempt is successful</returns>
-        public abstract bool RemoveChildNode(S address);
+        bool RemoveChildNode(S address);
 
         /// <summary>
         /// Attempts to remove the node from a specified address
@@ -15,6 +15,6 @@
         /// <param name="address">The address of the node to remove</param>
         /// <param name="node">The removed node, if the attempt is successful</param>
         /// <returns>Whether the attempt is successful</returns>
-        public abstract bool RemoveChildNode(S address, out IGDNode<S, T> node);
+        bool RemoveChildNode(S address, out IGDNode<S, T> node);
     }
 }

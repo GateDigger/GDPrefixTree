@@ -1,4 +1,6 @@
-﻿namespace GDPrefixTree
+﻿using System;
+
+namespace GDPrefixTree
 {
     /// <summary>
     /// GDPrefixTree is GateDigger's implementation of a generic prefix tree structure
@@ -25,7 +27,7 @@
         public IGDNode<S, T> Root
         {
             get;
-            private init;
+            private set;
         }
 
         bool TraverseReadOnly(IGDKey<S> key, out IGDNode<S, T> value)

@@ -1,4 +1,7 @@
-﻿using System.Text;
+﻿using System;
+using System.IO;
+using System.Text;
+using System.Linq;
 
 namespace GDPrefixTree
 {
@@ -12,7 +15,8 @@ namespace GDPrefixTree
             if (trie != null)
                 QueryWordCount(trie);
         }
-
+        
+        static int increment(int x) => x + 1;
         static GDPrefixTree<char, int> BuildIndex(string file)
         {
             if (!File.Exists(file))
@@ -21,7 +25,6 @@ namespace GDPrefixTree
                 return null;
             }
 
-            static int increment(int x) => x + 1;
 
             GDPrefixTree<char, int> result = new GDPrefixTree<char, int>(new WordCountingNode());
 

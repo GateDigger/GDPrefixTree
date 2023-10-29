@@ -1,4 +1,6 @@
-﻿namespace GDPrefixTree
+﻿using System;
+
+namespace GDPrefixTree
 {
     public partial class GDPrefixTree<S, T>
     {
