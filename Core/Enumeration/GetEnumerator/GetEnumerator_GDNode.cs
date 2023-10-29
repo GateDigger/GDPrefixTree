@@ -37,7 +37,7 @@ namespace GDPrefixTree
         public abstract bool RemoveChildNode(S address, out IGDNode<S, T> node);
 
         /// <summary>
-        /// Exposes the collection of all immediate descendants of the current node
+        /// Implements IGDNode.GetChildNodes
         /// </summary>
         public abstract IEnumerable<IGDNode<S, T>> GetChildNodes();
 
