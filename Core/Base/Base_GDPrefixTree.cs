@@ -62,7 +62,7 @@ namespace GDPrefixTree
 
                 if (!currentNode.FindChildNode(keyDigit, out nextNode))
                 {
-                    //If this goes through, TraverseReadWrite can finish the traversal process based on the result node and the current state of the key
+                    //If this goes through, TraverseReadWrite can finish the traversal process based on the result node and the current state of the key... Unless the key is a struct.
                     resultNode = currentNode;
                     return false;
                 }
