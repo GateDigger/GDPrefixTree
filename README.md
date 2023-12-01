@@ -47,6 +47,9 @@ The core part of the project is split up into subfolders in order to be as modul
 ### The example
 Example_WordCounting contains an implementations of IGDKey&lt;char&gt; and GDNode&lt;char, int&gt; suited for word counting. Program.cs contains a script which reads through a text file and builds a prefix tree which counts word occurences. User can query the tree.
 
+## IGDKey&lt;T&gt; vs IEnumerable&lt;T&gt;/IEnumerator&lt;T&gt;
+I decided to not use IEnumerablerator because it disallows composition of traversal methods. A class implementation of IGDKey&lt;T&gt; lets the developer invoke a read-only-traversal of the tree, do work on the leaf node and call a read-write-traversal from where read-only stopped, without any redundant work. If anyone manages to make IEnumerator do this without exception catching, please tell me, I'd love to see that.
+
 ## License
 
 MIT License
