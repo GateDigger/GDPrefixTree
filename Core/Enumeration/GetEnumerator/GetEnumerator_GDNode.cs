@@ -53,32 +53,41 @@ namespace GDPrefixTree
             Stack<IEnumerator<IGDNode<S, T>>> enumeratorStack = new Stack<IEnumerator<IGDNode<S, T>>>();
             IEnumerator<IGDNode<S, T>> currentEnumerator = GetChildNodes().GetEnumerator();
 
+            try
+            {
+            MOVENEXT:
+                if (!currentEnumerator.MoveNext())
+                    goto POP;
 
-        MOVENEXT:
-            if (!currentEnumerator.MoveNext())
-                goto POP;
+                if (currentEnumerator.Current == null)
+                    goto MOVENEXT;
 
-            if (currentEnumerator.Current == null)
+                yield return currentEnumerator.Current;
+                enumeratorStack.Push(currentEnumerator);
+                currentEnumerator = currentEnumerator.Current.GetChildNodes().GetEnumerator();
                 goto MOVENEXT;
 
-            yield return currentEnumerator.Current;
-            enumeratorStack.Push(currentEnumerator);
-            currentEnumerator = currentEnumerator.Current.GetChildNodes().GetEnumerator();
-            goto MOVENEXT;
+
+            POP:
+                if (enumeratorStack.Count == 0)
+                    goto BREAK;
+
+                currentEnumerator.Dispose();
+                currentEnumerator = enumeratorStack.Pop();
+                goto MOVENEXT;
 
 
-        POP:
-            currentEnumerator.Dispose();
+            BREAK:
+                yield break;
 
-            if (enumeratorStack.Count == 0)
-                goto BREAK;
+            }
+            finally
+            {
+                while (enumeratorStack.Count > 0)
+                    enumeratorStack.Pop().Dispose();
 
-            currentEnumerator = enumeratorStack.Pop();
-            goto MOVENEXT;
-
-
-        BREAK:
-            yield break;
+                currentEnumerator.Dispose();
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
